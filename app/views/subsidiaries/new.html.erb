@@ -1,0 +1,9 @@
+<%= form_for @subsidiary do |sd| %>
+  <%= sd.label :name, 'Nome' %>
+  <%= sd.text_field :name %>
+  <%= sd.label :cnpj, 'CNPJ' %>
+  <%= sd.text_field :cnpj %>
+  <%= sd.label :adress, 'Endereço' %>
+  <%= sd.text_field :adress %>
+  <%= sd.submit 'Enviar' %>
+<% end %>
