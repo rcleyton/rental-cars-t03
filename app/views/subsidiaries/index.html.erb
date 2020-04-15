@@ -1,9 +1,16 @@
-<% if @subsidiaries.any? %>
-  <% @subsidiaries.each do |s| %>
-    <%= link_to s.name, s %>
-  <% end %>
-<% else %>
+<h1>Filiais</h1>
+
+<% if @subsidiaries.empty? %>
   <h3>Nenhuma filial cadastrada</h3>
+<% else %>
+
+<ul>
+  <% @subsidiaries.each do |s| %>
+    <li><%= link_to s.name, s %></li>
+  <% end %>
+</ul>
+
 <% end %>
+
 <p><%= link_to 'Registrar nova filial', new_subsidiary_path %></p>
 <p><%= link_to 'Voltar', root_path %></p>

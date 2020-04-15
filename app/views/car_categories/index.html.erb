@@ -1,0 +1,15 @@
+<h1>Categoria de Carros</h1>
+
+<% if @car_categories.empty? %>
+  <h3>Nenhuma categoria cadastrada</h3>
+<% else %>
+
+<ul>
+  <%= @car_categories.each do |c| %>
+    <li><%= link_to c.name, c %></li>
+  <% end %>
+</ul>
+
+<% end %>
+
+<p><%= link_to 'Voltar', root_path %></p>

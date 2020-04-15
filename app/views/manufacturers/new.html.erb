@@ -1,5 +1,7 @@
+<h1>Registrar fabricante</h1>
+
 <%= form_for @manufacturer do |mf| %>
   <%= mf.label :name, 'Nome' %>
-  <%= mf.text_field :name %><br>
+  <%= mf.text_field :name %>
   <%= mf.submit 'Enviar' %>
 <% end %>
