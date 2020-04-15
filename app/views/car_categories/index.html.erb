@@ -5,11 +5,12 @@
 <% else %>
 
 <ul>
-  <%= @car_categories.each do |c| %>
+  <% @car_categories.each do |c| %>
     <li><%= link_to c.name, c %></li>
   <% end %>
 </ul>
 
 <% end %>
 
+<%= link_to 'Registrar nova categoria', new_car_category_path %>
 <p><%= link_to 'Voltar', root_path %></p>
