@@ -20,10 +20,10 @@ feature 'Admin view car category' do
     click_on 'Categoria de carros'
     click_on 'Econômico'
 
-    expect(page).to have_content('Econômico')
-    expect(page).to have_content(45.0)
-    expect(page).to have_content(28.5)
-    expect(page).to have_content(18.5)
+    expect(page).to have_css('h1', text: 'Econômico')
+    expect(page).to have_css('li', text: 45.0)
+    expect(page).to have_css('li', text: 28.5)
+    expect(page).to have_css('li', text: 18.5)
   end
 
   scenario 'and no car category are created' do
