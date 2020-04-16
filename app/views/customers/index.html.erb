@@ -1,0 +1,15 @@
+<h1>Clientes</h1>
+
+<p><%= link_to 'Registrar cliente', new_customer_path %>
+
+<% if @customers.empty? %>
+  <h3>Nenhum cliente cadastrado</h3>
+<% else%>
+  <ul>
+    <% @customers.each do |c| %>
+      <li><%= link_to c.name, c %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<p><%= link_to 'Voltar', root_path %>

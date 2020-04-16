@@ -1,0 +1,11 @@
+<h1>Registrar Cliente</h1>
+
+<%= form_for @customer do |c| %>
+  <%= c.label :name, 'Nome' %>
+  <%= c.text_field :name %>
+  <%= c.label :document, 'CPF' %>
+  <%= c.text_field :document %>
+  <%= c.label :email, 'E-mail' %>
+  <%= c.text_field :email %>
+  <%= c.submit 'Enviar' %>
+<% end %>
