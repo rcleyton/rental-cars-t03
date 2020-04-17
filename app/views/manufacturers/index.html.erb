@@ -1,5 +1,7 @@
 <h1>Fabricantes</h1>
 
+<p><%= link_to 'Registrar novo fabricante', new_manufacturer_path %></p>
+
 <% if @manufacturers.empty? %>
   <h3>Nenhum fabricante cadastrado</h3>
 <% else %>
@@ -10,7 +12,5 @@
   <% end %>
 </ul> 
 <% end %>
-
-<p><%= link_to 'Registrar novo fabricante', new_manufacturer_path %></p>
 
 <p><%= link_to 'Voltar', root_path %></p>

@@ -1,5 +1,7 @@
 <h1>Filiais</h1>
 
+<p><%= link_to 'Registrar nova filial', new_subsidiary_path %></p>
+
 <% if @subsidiaries.empty? %>
   <h3>Nenhuma filial cadastrada</h3>
 <% else %>
@@ -12,5 +14,4 @@
 
 <% end %>
 
-<p><%= link_to 'Registrar nova filial', new_subsidiary_path %></p>
 <p><%= link_to 'Voltar', root_path %></p>

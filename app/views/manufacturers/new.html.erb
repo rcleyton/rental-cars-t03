@@ -1,7 +1,11 @@
 <h1>Registrar fabricante</h1>
 
+<%= @manufacturer.errors.full_messages.each do |message| %>
+  <p><%= message %></p>
+<% end %>
+
 <%= form_for @manufacturer do |mf| %>
   <%= mf.label :name, 'Nome' %>
   <%= mf.text_field :name %>
   <%= mf.submit 'Enviar' %>
-<% end %>
+<% end %> 
