@@ -1,4 +1,7 @@
 <%= flash[:notice] %>
+
 <h3><%= @manufacturer.name %></h3>
+
+<p><%= link_to 'Editar', edit_manufacturer_path(@manufacturer) %>
 <p><%= link_to 'Voltar', manufacturers_path %></p>
 
