@@ -15,7 +15,7 @@ feature 'Admin view car category' do
   scenario 'and view details' do
     CarCategory.create!(name: 'Econômico', 
                         daily_rate: 45.0, car_insurance: 28.5,
-                        third_party_insurance: 18.5)
+                        third_part_insurance: 18.5)
 
     visit root_path
     click_on 'Categoria de carros'
