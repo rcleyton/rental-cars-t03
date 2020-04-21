@@ -11,6 +11,10 @@ class ManufacturersController < ApplicationController
     @manufacturer = Manufacturer.new
   end
 
+  def edit
+    @manufacturer = Manufacturer.find(params[:id])
+  end
+
   def create
     @manufacturer = Manufacturer.new(manufacturer_params)
     if @manufacturer.save
@@ -21,10 +25,6 @@ class ManufacturersController < ApplicationController
     end
   end
 
-  def edit
-    @manufacturer = Manufacturer.find(params[:id])
-  end
-
   def update
     @manufacturer = Manufacturer.find(params[:id])
     if @manufacturer.update(manufacturer_params)
@@ -32,6 +32,12 @@ class ManufacturersController < ApplicationController
     else 
       render :edit
     end
+  end
+
+  def destroy 
+    @manufacturer = Manufacturer.find(params[:id])
+    @manufacturer.destroy
+    redirect_to manufacturers_path
   end
 
   private
