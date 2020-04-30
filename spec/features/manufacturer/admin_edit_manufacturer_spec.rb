@@ -1,6 +1,6 @@
 require 'rails_helper'
-
-feature 'Admin edits manufacturer' do
+# revidar validação
+feature 'Admin edit manufacturer' do
   scenario 'successfully' do
     Manufacturer.create!(name: 'Fiat')
 
@@ -41,3 +41,5 @@ feature 'Admin edits manufacturer' do
     expect(page).to have_content('Nome deve ser único')
   end
 end
+
+

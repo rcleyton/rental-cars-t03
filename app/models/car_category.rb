@@ -1,2 +1,3 @@
 class CarCategory < ApplicationRecord
+  
 end

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Admin deletes manufacturer' do
+feature 'Admin delete manufacturer' do
   scenario 'successfully' do
     Manufacturer.create!(name: 'Fiat')
 

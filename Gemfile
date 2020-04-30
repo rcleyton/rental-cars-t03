@@ -35,6 +35,9 @@ group :development, :test do
   gem 'rspec-rails'
 end
 
+gem 'cpf_cnpj'
+gem 'devise'
+
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'

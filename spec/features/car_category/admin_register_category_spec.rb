@@ -1,16 +1,16 @@
 require 'rails_helper'
-
+#revisar
 feature 'Admin register category' do
   scenario 'from index page' do
     visit root_path
-    click_on 'Categoria de carros'
+    click_on 'Categoria de Carros'
 
     expect(page).to have_link('Registrar nova categoria', href: new_car_category_path)
   end
 
   scenario 'successfully' do
     visit root_path
-    click_on 'Categoria de carros'
+    click_on 'Categoria de Carros'
     click_on 'Registrar nova categoria'
      
     fill_in 'Nome', with: 'Intermediário'
