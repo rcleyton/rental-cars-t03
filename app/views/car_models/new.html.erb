@@ -1,17 +1,25 @@
 <h1>Novo modelo de carro</h1>
 
+<% if @car_model.errors.any? %>
+  <ul>
+    <%= @car_model.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= form_with model: @car_model, local: true do |f| %>
-  <%= f.label :name, 'Nome' %>
+  <%= f.label :name %>
   <%= f.text_field :name %>
-  <%= f.label :year, 'Ano' %>
+  <%= f.label :year %>
   <%= f.number_field :year, value: Time.zone.now.year %>
-  <%= f.label :motorization, 'Motor' %>
+  <%= f.label :motorization %>
   <%= f.text_field :motorization %>
-  <%= f.label :fuel_type, 'Combustível' %>
+  <%= f.label :fuel_type %>
   <%= f.text_field :fuel_type %>
-  <%= f.label :manufacturer_id, 'Fabricante' %>
+  <%= f.label :manufacturer_id %>
   <%= f.collection_select :manufacturer_id, @manufactures, :id, :name %>
-  <%= f.label :car_category_id, 'Categoria de Carro' %>
+  <%= f.label :car_category_id %>
   <%= f.collection_select :car_category_id, @car_categories, :id, :name %>
   <%= f.submit 'Enviar' %>
 <% end %>
