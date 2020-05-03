@@ -5,7 +5,7 @@ feature 'Admin view car models' do
     fiat = Manufacturer.create!(name: 'Fiat')
     ford = Manufacturer.create!(name: 'Ford')
     car_category = CarCategory.create!(name: 'Econômico', daily_rate: 66, 
-                                car_insurance: 31, third_part_insurance: 22)
+                                       car_insurance: 31, third_part_insurance: 22)
 
     CarModel.create!(name: 'Uno', year: 2020, manufacturer: fiat, car_category: car_category)
     CarModel.create!(name: 'Ka', year: 2021, manufacturer: ford, car_category: car_category)

@@ -2,10 +2,16 @@
 <dl>
   <dt>Diária:</dt>
     <dd><%= number_to_currency @car_category.daily_rate %></dd>
-  <dt>Seguro do carro:</dt>
+  <dt>Seguro do Carro:</dt>
     <dd><%= number_to_currency @car_category.car_insurance %></dd>
-  <dt>Seguro de terceiro:</dt>
+  <dt>Seguro para Terceiros:</dt>
     <dd><%= number_to_currency @car_category.third_part_insurance %></dd>
 </dl>
+
+<h3>Modelos de Carros</h3>
+
+<% @car_category.car_models.each do |car_model| %>
+  <%= link_to car_model.name, car_model %>
+<% end %>
 
 <p><%= link_to 'Voltar', car_categories_path %></p>
