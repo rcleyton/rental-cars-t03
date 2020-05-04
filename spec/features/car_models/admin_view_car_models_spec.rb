@@ -7,8 +7,12 @@ feature 'Admin view car models' do
     car_category = CarCategory.create!(name: 'Econômico', daily_rate: 66, 
                                        car_insurance: 31, third_part_insurance: 22)
 
-    CarModel.create!(name: 'Uno', year: 2020, manufacturer: fiat, car_category: car_category)
-    CarModel.create!(name: 'Ka', year: 2021, manufacturer: ford, car_category: car_category)
+    CarModel.create!(name: 'Uno', year: 2020, 
+                     motorization: '1.0', manufacturer: fiat, fuel_type: 'Flex',
+                     car_category: car_category)
+    CarModel.create!(name: 'Ka', year: 2021,
+                     fuel_type: 'Flex',
+                     motorization: '1.0', manufacturer: ford, car_category: car_category)
 
     visit root_path
     click_on 'Modelos de Carros'
