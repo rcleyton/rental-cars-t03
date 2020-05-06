@@ -8,7 +8,10 @@ feature 'Admin register rental' do
     car_category = CarCategory.create!(name: 'Econômico', daily_rate: 60,
                                        car_insurance: 30, 
                                        third_part_insurance: 20)
-    
+
+    user = User.create!(email: 'test@test.com', password: '12345678')
+
+    login_as user, scope: :user
     visit root_path
     click_on 'Locações'
     click_on 'Registrar nova locação'
@@ -25,6 +28,11 @@ feature 'Admin register rental' do
   end
 
   xscenario 'and must fill in all blank' do
+  end
+
+  scenario 'and must be authenticated' do
+    visit new_rental_path
+    expect(current_path).to eq(new_user_session_path)
 
   end
 end

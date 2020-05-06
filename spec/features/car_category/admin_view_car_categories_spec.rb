@@ -42,16 +42,17 @@ feature 'Admin view car categories' do
     expect(page).to have_content('Diária: R$ 50,00')
     expect(page).to have_content('Seguro do Carro: R$ 40,00')
     expect(page).to have_content('Seguro para Terceiros: R$ 30,00')
-    expect(page).to have_css('dd:nth-of-type(1)', text: 'R$ 50,00')
-    expect(page).to have_css('dd:nth-of-type(2)', text: 'R$ 40,00')
-    expect(page).to have_css('dd:nth-of-type(3)', text: 'R$ 30,00')
     expect(page).to have_link('Uno', href: car_model_path(uno))
     expect(page).to have_link('Mobi', href: car_model_path(mobi))
     expect(page).to have_link('Voltar', href: car_categories_path)
   end
 
-  xscenario 'empty list' do
+  scenario 'empty list' do
+    
+    visit root_path
+    click_on 'Categorias de Carros'
 
+    expect(page).to have_content('Nenhuma categoria cadastrada')
   end
 
   scenario 'and view filtered car models' do

@@ -1,4 +1,6 @@
 class RentalsController < ApplicationController
+  before_action :authenticate_user!, only: [:index, :new, :create]
+
   def index
     @rentals = Rental.all
   end
@@ -14,6 +16,20 @@ class RentalsController < ApplicationController
     #@rental.save!
     redirect_to rentals_path
   end 
+
+  def search
+    if params[:q].blank?
+      @rentals = Rental.all
+      flash.now[:alert] = 'Busca não pode ficar em branco'
+      render :index
+    end 
+    @rental = Rental.find_by(code: params[:q].upcase)
+    if @rental.blank?
+      @rentals = Rental.all
+      flash.now[:alert] = "Nenhum resultado encontrado para: #{params[:q]}"
+      render :index
+    end
+  end
 
   private
   def rental_params

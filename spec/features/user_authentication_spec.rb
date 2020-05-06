@@ -22,9 +22,12 @@ feature 'User authentication' do
     xscenario 'and must fill in all fields' do
       visit root_path
       click_on 'Entrar'
+      fill_in 'Email', with: ''
+      fill_in 'Senha', with: ''
       within 'form' do
         click_on 'Entrar'
       end
+
 
       expect(page).to have_content('Email não pode ficar em branco')
       expect(page).to have_content('Senha não pode ficar em branco')

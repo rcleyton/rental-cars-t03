@@ -2,15 +2,23 @@
 
 <%= link_to 'Registrar nova locação', new_rental_path %>
 
+<%= form_with url: search_rentals_path, method: :get do |f| %>
+  <%= f.label :q, 'Código '%>
+  <%= f.text_field :q %>
+  <%= f.submit 'Buscar' %>
+<% end %>
+
 <% @rentals.each do |rental| %>
   <dl>
+    <dt>Código:</dt>
+    <dd><%= rental.code %></dd>
     <dt>Data de início:</dt>
-      <dd><%= l rental.start_date %></dd>
-  </dl>
+    <dd><%= l rental.start_date %></dd>
     <dt>Data de término:</dt>
-      <dd><%= l rental.end_date %></dd>
+    <dd><%= l rental.end_date %></dd>
     <dt>Cliente:</dt>
-      <dd><%= rental.customer.name %></dd>
+    <dd><%= rental.customer.name %></dd>
     <dt>Categoria:</dt>
-      <dd><%= rental.car_category.name %></dd>
+    <dd><%= rental.car_category.name %></dd>
+  </dl>
 <% end %>

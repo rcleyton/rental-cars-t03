@@ -1,8 +1,8 @@
 require 'rails_helper'
-# revidar validação
-feature 'Admin edit manufacturer' do
+
+feature 'Admin edits manufacturer' do
   scenario 'successfully' do
-    Manufacturer.create!(name: 'Fiat')
+    Manufacturer.create(name: 'Fiat')
 
     visit root_path
     click_on 'Fabricantes'
@@ -14,8 +14,8 @@ feature 'Admin edit manufacturer' do
     expect(page).to have_content('Honda')
   end
 
-  scenario 'and name cannot be blank' do
-    Manufacturer.create!(name: 'Fiat')
+  scenario 'successfully' do
+    Manufacturer.create(name: 'Fiat')
 
     visit root_path
     click_on 'Fabricantes'
@@ -24,12 +24,12 @@ feature 'Admin edit manufacturer' do
     fill_in 'Nome', with: ''
     click_on 'Enviar'
 
-    expect(page).to have_content('Nome não pode ficar em branco')
+    expect(page).to have_content('não pode ficar em branco')
   end
 
-  scenario 'and name must be unique' do
-    Manufacturer.create!(name: 'Fiat')
-    Manufacturer.create!(name: 'Honda')
+  scenario 'successfully' do
+    Manufacturer.create(name: 'Fiat')
+    Manufacturer.create(name: 'Honda')
 
     visit root_path
     click_on 'Fabricantes'
@@ -38,8 +38,6 @@ feature 'Admin edit manufacturer' do
     fill_in 'Nome', with: 'Honda'
     click_on 'Enviar'
 
-    expect(page).to have_content('Nome deve ser único')
+    expect(page).to have_content('já está em uso')
   end
 end
-
-
