@@ -5,8 +5,12 @@ feature 'Admin view car categories' do
     # Arrange
     CarCategory.create!(name: 'A', daily_rate: 50)
     CarCategory.create!(name: 'B', daily_rate: 70)
+    user = User.create!(email: 'test@test.com', password: '12345678')
+
+    
 
     # Act
+    login_as user, scope: :user
     visit root_path
     click_on 'Categorias de Carros'
 
@@ -31,8 +35,10 @@ feature 'Admin view car categories' do
                             motorization: '1.0', fuel_type: 'Flex', 
                             car_category: car_category)
 
-
+    user = User.create!(email: 'test@test.com', password: '12345678')
+                            
     # Act
+    login_as user, scope: :user
     visit root_path
     click_on 'Categorias de Carros'
     click_on 'Categoria A'
@@ -48,7 +54,9 @@ feature 'Admin view car categories' do
   end
 
   scenario 'empty list' do
-    
+    user = User.create!(email: 'test@test.com', password: '12345678')
+
+    login_as user, scope: :user
     visit root_path
     click_on 'Categorias de Carros'
 
@@ -71,7 +79,10 @@ feature 'Admin view car categories' do
                              motorization: '1.0', fuel_type: 'Flex', 
                              car_category: car_category_b)
 
+    user = User.create!(email: 'test@test.com', password: '12345678')
+    
     # Act
+    login_as user, scope: :user
     visit root_path
     click_on 'Categorias de Carros'
     click_on 'Categoria A'

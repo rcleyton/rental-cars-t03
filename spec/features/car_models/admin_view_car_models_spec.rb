@@ -2,6 +2,7 @@ require 'rails_helper'
 
 feature 'Admin view car models' do
   scenario 'successfully' do
+    user = User.create!(email: 'test@test.com', password: '12345678')
     fiat = Manufacturer.create!(name: 'Fiat')
     ford = Manufacturer.create!(name: 'Ford')
     car_category = CarCategory.create!(name: 'Econômico', daily_rate: 66, 
@@ -14,6 +15,7 @@ feature 'Admin view car models' do
                      fuel_type: 'Flex',
                      motorization: '1.0', manufacturer: ford, car_category: car_category)
 
+    login_as user, scope: :user
     visit root_path
     click_on 'Modelos de Carros'
     
@@ -27,6 +29,7 @@ feature 'Admin view car models' do
   end
 
   scenario 'end view details' do
+    user = User.create!(email: 'test@test.com', password: '12345678')
     fiat = Manufacturer.create!(name: 'Fiat')
     car_category_a = CarCategory.create!(name: 'Econômico', daily_rate: 66, 
                                          car_insurance: 31,
@@ -43,7 +46,8 @@ feature 'Admin view car models' do
     CarModel.create!(name: 'Toro', year: 2020, manufacturer: fiat,
                      motorization: '2.0 Turbo', fuel_type: 'Diesel', 
                      car_category: car_category_b)
-                      
+    
+    login_as user, scope: :user
     visit root_path
     click_on 'Modelos de Carros'
     within("tr#car-model-#{cm.id}") do

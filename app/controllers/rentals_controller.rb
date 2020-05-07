@@ -18,17 +18,16 @@ class RentalsController < ApplicationController
   end 
 
   def search
-    if params[:q].blank?
-      @rentals = Rental.all
-      flash.now[:alert] = 'Busca não pode ficar em branco'
-      render :index
-    end 
-    @rental = Rental.find_by(code: params[:q].upcase)
-    if @rental.blank?
+    @q = params[:q]
+    @rental = Rental.find_by(code: @q.upcase)
+=begin  
+    @rental = Rental.find_by(code: params[:q].upcase)  
+    if @rental.blank? || params[:q].blank?
       @rentals = Rental.all
       flash.now[:alert] = "Nenhum resultado encontrado para: #{params[:q]}"
       render :index
     end
+=end
   end
 
   private

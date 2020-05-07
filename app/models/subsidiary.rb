@@ -1,7 +1,7 @@
 class Subsidiary < ApplicationRecord
-  validates :name, :cnpj, presence: true
-  validates :name, uniqueness: true
-  validates :cnpj, format: { with: (/\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}/), message: 'não é válido'}
+  validates :name, :cnpj, :adress, presence: true
+  validates :name, :cnpj, uniqueness: true
+  validates :cnpj, format: { with: /\A^\d{2,3}\.\d{3}\.\d{3}\/\d{4}\-\d{2}$\z/, message: 'com formato inválido' }
   validate :cnpj_must_be_valid
 
   private

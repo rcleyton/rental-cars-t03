@@ -4,7 +4,9 @@ require 'rails_helper'
     scenario 'successfuly' do
       Customer.create!(name: 'Ronaldo Nazário')
       Customer.create!(name: 'Edson Arantes')
+      user = User.create!(email: 'test@test.com', password: '12345678')
 
+      login_as user, scope: :user
       visit root_path
       click_on 'Clientes'
 
@@ -16,8 +18,10 @@ require 'rails_helper'
       Customer.create!(name: 'Ronaldo Nazário',
                        document: '489.521.302-15',
                        email: 'ronaldo@r9.com')
-      
 
+      user = User.create!(email: 'test@test.com', password: '12345678')
+      
+      login_as user, scope: :user
       visit root_path
       click_on 'Clientes'
       click_on 'Ronaldo Nazário'
@@ -28,6 +32,9 @@ require 'rails_helper'
     end
     
     scenario 'and no customer are created' do
+      user = User.create!(email: 'test@test.com', password: '12345678')
+
+      login_as user, scope: :user
       visit root_path 
       click_on 'Clientes'
 
@@ -37,7 +44,9 @@ require 'rails_helper'
     scenario ' and return to home page' do
       Customer.create!(name: 'Ronaldo Nazário')
       Customer.create!(name: 'Edson Arantes')
+      user = User.create!(email: 'test@test.com', password: '12345678')
 
+      login_as user, scope: :user
       visit root_path
       click_on 'Clientes'
       click_on 'Voltar'
@@ -48,7 +57,9 @@ require 'rails_helper'
     scenario 'and return to customer page' do
       Customer.create!(name: 'Ronaldo Nazário')
       Customer.create!(name: 'Edson Arantes')
+      user = User.create!(email: 'test@test.com', password: '12345678')
 
+      login_as user, scope: :user
       visit root_path
       click_on 'Clientes'
       click_on 'Ronaldo Nazário'

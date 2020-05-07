@@ -9,7 +9,8 @@ describe Subsidiary do
     end
 
     it 'must be unique' do
-      Subsidiary.create!(name: 'Paulista', cnpj: '75.641.502/0001-09')
+      Subsidiary.create!(name: 'Paulista', cnpj: '75.641.502/0001-09',
+                        adress: 'Rua Manoel Garrido Ferri, 546')
       subsidiary = Subsidiary.new(name: 'Paulista')
       subsidiary.valid?
       expect(subsidiary.errors[:name]).to include('já está em uso')

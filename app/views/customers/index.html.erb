@@ -2,12 +2,20 @@
 
 <p><%= link_to 'Registrar cliente', new_customer_path %>
 
+<%= form_with url: search_customers_path, method: :get do |f| %>
+  <%= f.label :q, 'Busca' %>
+  <%= f.search_field :q %>
+  <%= f.submit 'Buscar' %>
+<% end%>
+
 <% if @customers.empty? %>
   <h3>Nenhum cliente cadastrado</h3>
 <% else%>
   <ul>
     <% @customers.each do |c| %>
       <li><%= link_to c.name, c %></li>
+      <li><%= link_to c.email, c %></li>
+      <li><%= link_to c.document, c %></li>
     <% end %>
   </ul>
 <% end %>

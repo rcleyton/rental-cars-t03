@@ -3,9 +3,11 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root 'home#index'
   resources :manufacturers
-  resources :subsidiaries, only: [:index, :new, :show, :create]
+  resources :subsidiaries, only: [:index, :new, :show, :create, :edit, :update]
   resources :car_categories, only: [:index, :new, :show, :create]
-  resources :customers, only: [:index, :new, :show, :create]
+  resources :customers, only: [:index, :new, :show, :create] do
+    get 'search', on: :collection
+  end
   resources :car_models, only: [:index, :new, :show, :create]
   resources :rentals, only: [:index, :new, :show, :create] do
     get 'search', on: :collection

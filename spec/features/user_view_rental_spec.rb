@@ -1,7 +1,33 @@
 require 'rails_helper'
 
 feature 'User view rental' do
-  xscenario 'successfully' do
+  scenario 'successfully' do
+    user = User.create!(email: 'test@test.com', password: '12345678')
+
+    customer = Customer.create!(name: 'Mario Godinho')
+    car_category = CarCategory.create!(name: 'Econômico')
+
+    rental = Rental.create!(customer: customer,
+                            car_category: car_category, 
+                            start_date: '22/07/2019', 
+                            end_date: '24/07/2019')
+
+    visit root_path
+    click_on 'Entrar'
+    fill_in 'Email', with: user.email
+    fill_in 'Senha', with: user.password
+    within 'form' do
+      click_on 'Entrar'
+    end
+    click_on 'Locações'
+
+    expect(page).to have_content(rental.code)
+    expect(page).to have_content('22/07/2019')
+    expect(page).to have_content('24/07/2019')
+    expect(page).to have_content('Mario Godinho')
+    expect(page).to have_content('Econômico')
+ 
+
   end
 
   scenario 'cannot view unless logged in' do

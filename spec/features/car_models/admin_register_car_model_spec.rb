@@ -2,10 +2,12 @@ require 'rails_helper'
 
 feature 'Admin register car models' do
   scenario 'successfuly' do
+    user = User.create!(email: 'test@test.com', password: '12345678')
     manufacturer = Manufacturer.create!(name: 'Fiat')
     car_category = CarCategory.create!(name: 'Econômico', daily_rate: 70,
                                        car_insurance: 30, third_part_insurance: 30)
 
+    login_as user, scope: :user
     visit root_path
     click_on 'Modelos de Carros'
     click_on 'Registrar modelo de carro'
