@@ -4,7 +4,9 @@ feature 'User view rental' do
   scenario 'successfully' do
     user = User.create!(email: 'test@test.com', password: '12345678')
 
-    customer = Customer.create!(name: 'Mario Godinho')
+    customer = Customer.create!(name: 'Mario Godinho',
+                                email: 'teste@teste.com',
+                                document: '776.402.998-02')
     car_category = CarCategory.create!(name: 'Econômico')
 
     rental = Rental.create!(customer: customer,

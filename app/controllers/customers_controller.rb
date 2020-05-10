@@ -1,4 +1,6 @@
 class CustomersController < ApplicationController
+  before_action :authenticate_user!, only: [:index, :new, :create]
+  
   def index
     @customers = Customer.all
   end
@@ -13,12 +15,16 @@ class CustomersController < ApplicationController
 
   def create
     @customer = Customer.new(customer_params)
-    @customer.save
-    redirect_to @customer
+    if @customer.save
+      flash[:notice] = 'Cliente cadastrado com sucesso'
+      redirect_to @customer
+    else  
+      render :new
+    end
   end
 
   def search
-    @customers = Customer.where(name: params[:q])
+    @customers = Customer.search(params[:q])
     render :index
   end
 

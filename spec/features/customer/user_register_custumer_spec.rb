@@ -20,13 +20,13 @@ require 'rails_helper'
       click_on 'Registrar cliente'
 
       fill_in 'Nome', with: 'Ronaldo Nazário'
-      fill_in 'CPF', with: '489.521.302-15'
+      fill_in 'CPF', with: '776.402.998-02'
       fill_in 'E-mail', with: 'ronaldo@r9.com'
       click_on 'Enviar'
 
       expect(current_path).to eq customer_path(Customer.last.id)
       expect(page).to have_css('h1', text: 'Ronaldo Nazário')
-      expect(page).to have_css('li', text: '489.521.302-15')
+      expect(page).to have_css('li', text: '776.402.998-02')
       expect(page).to have_css('li', text: 'ronaldo@r9.com')
     end  
   end

@@ -1,11 +1,15 @@
 <h1>Registrar Cliente</h1>
 
+<% @customer.errors.full_messages.each do |msg| %>
+  <%= msg %>
+<% end %>
+
 <%= form_for @customer do |c| %>
-  <%= c.label :name, 'Nome' %>
+  <%= c.label :name %>
   <%= c.text_field :name %>
-  <%= c.label :document, 'CPF' %>
+  <%= c.label :document %>
   <%= c.text_field :document %>
-  <%= c.label :email, 'E-mail' %>
+  <%= c.label :email %>
   <%= c.text_field :email %>
   <%= c.submit 'Enviar' %>
 <% end %>

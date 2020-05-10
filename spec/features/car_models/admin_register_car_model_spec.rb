@@ -31,6 +31,9 @@ feature 'Admin register car models' do
   end
 
   scenario 'and fill in all fields' do
+    user = User.create!(email: 'test@test.com', password: '12345678')
+
+    login_as user, scope: :user
     visit new_car_model_path
     fill_in 'Ano', with: ''
     click_on 'Enviar'

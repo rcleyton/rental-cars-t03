@@ -2,7 +2,7 @@
 
 <p><%= link_to 'Registrar cliente', new_customer_path %>
 
-<%= form_with url: search_customers_path, method: :get do |f| %>
+<%= form_with url: search_customers_path, local: true, method: :get do |f| %>
   <%= f.label :q, 'Busca' %>
   <%= f.search_field :q %>
   <%= f.submit 'Buscar' %>

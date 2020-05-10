@@ -33,7 +33,7 @@ describe Subsidiary do
     it 'must be ponctuated' do
       subsidiary = Subsidiary.new(cnpj: '20749748000107') 
       subsidiary.valid?
-      expect(subsidiary.errors[:cnpj]).to include('não é válido')
+      expect(subsidiary.errors[:cnpj]).to include('com formato inválido')
     end
   end
 end
