@@ -5,7 +5,8 @@ class Customer < ApplicationRecord
   validates :document, :email, uniqueness: true
   validate :cpf_must_be_valid
 
-  scope :search, ->(query) { where('name LIKE ?', "%#{query}%") }
+  scope :search, ->(query) { where('name LIKE ?', "%#{query}%")
+                                   .or(where(document: query)) }
 
   private
   def cpf_must_be_valid
