@@ -8,6 +8,8 @@
     <dd><%= number_to_currency @car_category.third_part_insurance %></dd>
 </dl>
 
+<%= link_to 'Editar', edit_car_category_path %>
+
 <h3>Modelos de Carros</h3>
 
 <% @car_category.car_models.each do |car_model| %>

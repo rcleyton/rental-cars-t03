@@ -1,6 +1,8 @@
 class SubsidiariesController  < ApplicationController
   before_action :authenticate_user!, only: [:index, :new, :create]
-  
+  # before_action :authorize_admin # verificar ser o usuário é admin depois de logar
+  # before_action :set_subdisiary, %i[show edit update]
+
   def index
     @subsidiaries = Subsidiary.all
   end
@@ -40,5 +42,9 @@ class SubsidiariesController  < ApplicationController
   def subsidiary_params
     params.require(:subsidiary).permit(:name, :cnpj, :adress)
   end
+
+  # def authorize_admin
+  #   redirect_to root_path, notice: 'Não autorizado' unless current_user.admin?
+  # end
 
 end

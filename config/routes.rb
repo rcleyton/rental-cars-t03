@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root 'home#index'
   resources :manufacturers
   resources :subsidiaries, only: [:index, :new, :show, :create, :edit, :update]
-  resources :car_categories, only: [:index, :new, :show, :create]
+  resources :car_categories, only: [:index, :new, :show, :create, :edit, :update]
   resources :customers, only: [:index, :new, :show, :create] do
     get 'search', on: :collection
   end

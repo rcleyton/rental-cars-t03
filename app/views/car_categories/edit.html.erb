@@ -1,4 +1,8 @@
-<h1>Registrar Categoria</h1>
+<h1>Editar categoria</h1>
+
+<% @car_category.errors.full_messages.each do |msg| %>
+  <%= msg %>
+<% end %>
 
 <%= form_for @car_category do |c_c| %>
   <%= c_c.label :name %>
